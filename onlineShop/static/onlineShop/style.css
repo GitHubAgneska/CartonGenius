@@ -1,0 +1,56 @@
+
+/* == base.html style == */
+
+.sidebar{
+    width:40%;
+    height:20%;
+    background-color: lightblue;
+}
+
+.content {
+    width:40%;
+    height:20%;
+    background-color: lightgreen;
+}
+
+
+/* =============== */
+.index-container {
+    height: 100%;
+    width:100%;
+    background-color: lightpink;
+}
+
+
+.items-container {
+    width:80%;
+    height:80%;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.item-container {
+    height: 25vh;
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    border: 1px solid black;
+    padding:5%;
+    margin: 5%;
+
+}
+
+.item-container h4 {
+    height:15%;
+}
+
+.item-container h5 {
+    background-color: grey;
+    height:15%;
+    background-color: lightgoldenrodyellow;
+    text-align: center;
+    border-top:3px solid black;
+}
