@@ -1,7 +1,7 @@
 
 /* == base.html style == */
 
-.sidebar{
+/* .sidebar{
     width:40%;
     height:20%;
     background-color: lightblue;
@@ -11,16 +11,50 @@
     width:40%;
     height:20%;
     background-color: lightgreen;
-}
+} */
 
 
-/* =============== */
-.index-container {
+
+/* ====== home page ===== */
+
+.content-container {
     height: 100%;
     width:100%;
-    background-color: lightpink;
+    background-color: #806C3F;
 }
 
+.intro-title {
+    margin-top:10vh;
+}
+
+.intro-title, .app-titles {
+    width:80%;
+    margin: auto;
+    font-family: "Questrial";
+    text-align: center;
+}
+
+.intro-title > h1 {
+    font-size: 2rem;
+    color: #EDDEDE;
+}
+
+.app-titles {
+    font-size: 5rem;
+/* text-transform: uppercase; */
+}
+
+.app-titles > h1:first-child {
+    color: #AA8D8D;
+}
+
+.app-titles > h1:nth-child(2) {
+    color:#FFFFFF;
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+}
+
+/* ====== product page ===== */
 
 .items-container {
     width:80%;

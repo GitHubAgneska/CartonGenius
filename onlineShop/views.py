@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 
 from .models import Product
+from .forms import AddProductForm
 
 def base(request):
     template = loader.get_template('onlineShop/base.html')
@@ -15,7 +16,9 @@ def home(request):
 
 
 # Display products + handle add item to cart
-def shopping(request,  form_class = AddProductForm):
+def shopping(request,  
+            #form_class = AddProductForm
+            ):
     template = loader.get_template('onlineShop/shopping.html')
     
     products = Product.objects.all()
@@ -23,7 +26,7 @@ def shopping(request,  form_class = AddProductForm):
     initial_data = {}
     
     context = { 'products': products, 
-                "add_product_form": add_product_form
+                # "add_product_form": add_product_form
                 #"images": products.images.all(),
     }
     return HttpResponse(template.render(context, request)) 
@@ -31,4 +34,4 @@ def shopping(request,  form_class = AddProductForm):
 
 # Display cart and handle remove items from cart
 # https://github.com/stephenmcd/cartridge/blob/master/cartridge/shop/views.py
-def cart(request, template="onlineShop/cart.html") :
+# def cart(request, template="onlineShop/cart.html") :

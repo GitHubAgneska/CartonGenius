@@ -19,8 +19,6 @@ class Customer(models.Model):
     zip_code = models.IntegerField(default=0)
     country = models.CharField(max_length=50)
     
-
-    
 class Product(models.Model):
     name = models.CharField(max_length=100)
     reference = models.CharField(max_length=100)
@@ -90,11 +88,8 @@ class SelectedProduct(models.Model):
         return ""
 
     def save(self, *args, **kwargs):
-        """
-        Set the total price based on the given quantity. If the
-        quantity is zero, which may occur via the cart page, just
-        delete it.
-        """
+        # Set total price based on given quantity. 
+        # If quantity is zero, delete it
         if not self.id or self.quantity > 0:
             self.total_price = self.unit_price * self.quantity
             super(SelectedProduct, self).save(*args, **kwargs)
@@ -103,17 +98,17 @@ class SelectedProduct(models.Model):
             
             
             
-    class CartItem(SelectedProduct):
-        cart = models.ForeignKey("Cart", related_name="items", on_delete=models.CASCADE)
-        url = CharField(max_length=2000)
-        image = CharField(max_length=200, null=True)
+class CartItem(SelectedProduct):
+    cart = models.ForeignKey("Cart", related_name="items", on_delete=models.CASCADE)
+    url = CharField(max_length=2000)
+    image = CharField(max_length=200, null=True)
+    
+    def get_absolute_url(self):
+        return self.url
 
-        def get_absolute_url(self):
-            return self.url
+    def save(self, *args, **kwargs):
+        super(CartItem, self).save(*args, **kwargs)
 
-        def save(self, *args, **kwargs):
-            super(CartItem, self).save(*args, **kwargs)
-
-            # Check if this is the last cart item being removed
-            if self.quantity == 0 and not self.cart.items.exists():
-                self.cart.delete()
+        # Check if this is the last cart item being removed
+        if self.quantity == 0 and not self.cart.items.exists():
+            self.cart.delete()
