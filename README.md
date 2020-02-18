@@ -24,7 +24,7 @@
 #### Current issues
 
 - Displaying Product image (local url issue)
-- Django sass/scss compressor compatibility
+- Django sass/scss compressor compatibility (see https://github.com/jrief/django-sass-processor)
 
 
 ---
