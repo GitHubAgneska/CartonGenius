@@ -17,7 +17,7 @@
 - Soon to be done :
     + Existing graphic design to be implemented
     + Base.html to create
-
+    + Add breakpoints for responsive
 
 ---
 

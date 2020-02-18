@@ -1,26 +1,29 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'onlineShop/style.css' %}">
 
-
-{% if products %}
-    <div class="items-container">
-        {% for product in products %}
-            <div class="item-container">
-                <h4>{{ product.name }}</h4>
-                <img src="{{ MEDIA_URL }}{{ product.image }}" alt='' />
-                <h5>{{ product.price }} €</h5>
-                
-                <form method="post" id="add-cart" class="shop-form">
-                    {% csrf_token %}
-                    <button type="button">BUY</button>
-                    {% for field in form %}
-                        {{ field }}
-                    {% endfor %}
-                    <div class="form-actions">
-                        <input type="submit" class="btn btn-primary btn-lg pull-right" name="add_cart" value="">
-                    </div>
-                </form>
-            </div>
-        {% endfor %}
+{% block content %}
+    <div class="productpage-title">
+        <h1>Products selection</h1>
     </div>
-{% endif %}
+    {% if products %}
+        <div class="items-container">
+            {% for product in products %}
+                <div class="item-container">
+                    <h4>{{ product.name }}</h4>
+                    <img src="{{ product.image }}" alt='' />
+                    <h5>{{ product.price }} €</h5>
+                    
+                    <form method="post" id="add-cart" class="shop-form">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            {{ field }}
+                        {% endfor %}
+                        <div class="form-actions">
+                            <input type="submit" class="buy-btn" name="add_cart" value="Add to cart">
+                        </div>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

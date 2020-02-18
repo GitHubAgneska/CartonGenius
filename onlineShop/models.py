@@ -22,7 +22,7 @@ class Customer(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=100)
     reference = models.CharField(max_length=100)
-    image = models.ImageField(blank=True, upload_to='static/images/')
+    image = models.ImageField(blank=True, upload_to='images/')
     price = models.IntegerField(default=0)
     restock_date = models.DateTimeField('date restocked')
     restock_amount = models.IntegerField(default=40)
